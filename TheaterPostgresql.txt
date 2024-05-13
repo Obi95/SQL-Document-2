@@ -1,0 +1,42 @@
+CREATE TABLE Concession (
+  concession_id INT,
+  drink VARCHAR(255),
+  snacks VARCHAR(255),
+  food VARCHAR(255),
+  popcorn INT,
+  price FLOAT,
+  quantity INT,
+  PRIMARY KEY (concession_id)
+);
+
+CREATE TABLE Movie (
+  movie_id INT,
+  movie_name VARCHAR(255),
+  category VARCHAR(255),
+  duration INT,
+  release_date TIMESTAMP,
+  PRIMARY KEY (movie_id)
+);
+
+CREATE TABLE Customer (
+  customer_id INT,
+  name VARCHAR(255),
+  email VARCHAR(255),
+  phone_number VARCHAR(20),
+  address TEXT,
+  total_purchase FLOAT,
+  PRIMARY KEY (customer_id)
+);
+
+CREATE TABLE Ticket (
+  ticket_id INT,
+  movie_id INT,
+  aisle_id INT,
+  seat VARCHAR(10),
+  show_time TIMESTAMP,
+  price FLOAT,
+  customer_id INT,
+  PRIMARY KEY (ticket_id),
+  FOREIGN KEY (movie_id) REFERENCES Movie(movie_id),
+  FOREIGN KEY (customer_id) REFERENCES Customer(customer_id)
+);
